@@ -1,7 +1,6 @@
 .hugo_build.lock
 /public/
 /resources/
-/themes/
 *.jpg~
 *.png~
 
