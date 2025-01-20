@@ -1,4 +1,58 @@
 baseURL = 'https://timaidley.github.io/'
 languageCode = 'en-us'
 title = 'Tim Aidley Dot Com'
-theme = 'ananke'
+theme = 'anatole'
+
+
+[menu]
+
+    [[menu.main]]
+    name = "Home"
+    identifer = "home"
+    weight = 100
+    url = "/"
+    
+    [[menu.main]]
+    name = "Posts"
+    weight = 200
+    identifier = "posts"
+    url = "/post/"
+    
+    [[menu.main]]
+    name = "About"
+    weight = 300
+    identifier = "about"
+    url = "/about/"
+
+
+[params]
+title = "Tim Aidley"
+author = "Tim Aidley"
+description = "All about Tim"
+profilePicture = "general/tim.jpg"
+contentratio = 0.65
+
+    [[params.socialIcons]]
+    icon = "fab fa-bluesky"
+    title = "Bluesky"
+    url = "https://bsky.app/profile/tim.aidley.com"
+    
+    [[params.socialIcons]]
+    icon = "fab fa-mastodon"
+    title = "Mastodon"
+    url = "https://mastodon.gamedev.place/@planettimmy"
+    
+    [[params.socialIcons]]
+    icon = "fab fa-github"
+    title = "GitHub"
+    url = "https://github.com/TimAidley"
+    
+    [[params.socialIcons]]
+    icon = "fas fa-envelope"
+    title = "email"
+    url = "mailto:tim@aidley.com"
+    
+    [[params.socialIcons]]
+    icon = "fab fa-linkedin"
+    title = "LinkedIn"
+    url = "https://www.linkedin.com/in/timaidley/"

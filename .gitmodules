@@ -4,3 +4,15 @@
 [submodule "aidley.com/themes/soho"]
 	path = aidley.com/themes/soho
 	url = https://github.com/alexandrevicenzi/soho.git
+[submodule "aidley.com/themes/arberia"]
+	path = aidley.com/themes/arberia
+	url = https://github.com/antedoro/arberia.git
+[submodule "aidley.com/themes/hugo-whisper-theme"]
+	path = aidley.com/themes/hugo-whisper-theme
+	url = https://github.com/zerostaticthemes/hugo-whisper-theme.git
+[submodule "aidley.com/themes/hugo-simple"]
+	path = aidley.com/themes/hugo-simple
+	url = https://github.com/maolonglong/hugo-simple.git
+[submodule "aidley.com/themes/anatole"]
+	path = aidley.com/themes/anatole
+	url = https://github.com/lxndrblz/anatole.git
