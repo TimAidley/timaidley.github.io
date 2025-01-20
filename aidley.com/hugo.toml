@@ -1,0 +1,4 @@
+baseURL = 'https://tim.aidley.com/'
+languageCode = 'en-us'
+title = 'Tim Aidley Dot Com'
+theme = 'soho'
