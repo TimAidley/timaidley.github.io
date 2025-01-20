@@ -55,16 +55,12 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
           TZ: America/Los_Angeles
+        working-directory: ./aidley.com/
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --config ./aidley.com/hugo.toml \
-            --configDir ./aidley.com/ \
-            --contentDir ./aidley.com/content/ \
-            --layoutDir ./aidley.com/layout/ \
-            --themesDir ./aidley.com/themes
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
