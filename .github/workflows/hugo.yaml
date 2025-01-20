@@ -61,7 +61,10 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --config ./aidley.com/hugo.toml \
-            --configDir ./aidley.com/
+            --configDir ./aidley.com/ \
+            --contentDir ./aidley.com/content/ \
+            --layoutDir ./aidley.com/layout/ \
+            --themesDir ./aidley.com/themes
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
