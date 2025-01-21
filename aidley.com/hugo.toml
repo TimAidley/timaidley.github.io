@@ -16,7 +16,7 @@ theme = 'anatole'
     name = "Posts"
     weight = 200
     identifier = "posts"
-    url = "/post/"
+    url = "/posts/"
     
     [[menu.main]]
     name = "About"
@@ -24,6 +24,10 @@ theme = 'anatole'
     identifier = "about"
     url = "/about/"
 
+[taxonomies]
+    category = "categories"
+    series = "series"
+    tags = "tags"
 
 [params]
 title = "Tim Aidley"
@@ -31,6 +35,25 @@ author = "Tim Aidley"
 description = "All about Tim"
 profilePicture = "general/tim.jpg"
 contentratio = 0.65
+disableTitleCapitalization = false
+readMore = true
+relatedPosts = true
+numberOfRelatedPosts = 3
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+    [[related.indices]]
+      name = 'series'
+      weight = 80
+    [[related.indices]]
+      name = 'keywords'
+      weight = 100
+    [[related.indices]]
+      name = 'tags'
+      weight = 80
+
 
     [[params.socialIcons]]
     icon = "fab fa-bluesky"
