@@ -1,6 +1,6 @@
-baseURL = 'https://timaidley.github.io/'
+baseURL = 'https://aidley.com/'
 languageCode = 'en-us'
-title = 'Tim Aidley Dot Com'
+title = 'Tim Aidley'
 theme = 'anatole'
 
 
