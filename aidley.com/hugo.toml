@@ -1,4 +1,4 @@
-baseURL = 'https://aidley.com/'
+baseURL = 'https://www.aidley.com/'
 languageCode = 'en-us'
 title = 'Tim Aidley'
 theme = 'anatole'
