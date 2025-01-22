@@ -32,13 +32,13 @@ theme = 'anatole'
 [params]
 title = "Tim Aidley"
 author = "Tim Aidley"
-description = "All about Tim"
 profilePicture = "general/tim.jpg"
 contentratio = 0.65
 disableTitleCapitalization = false
 readMore = true
 relatedPosts = true
 numberOfRelatedPosts = 3
+postDescription="<center><img src=\"general/transflag.png\" height=120><br/>Trans rights are human rights.</center>"
 
 [related]
   includeNewer = true
