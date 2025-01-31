@@ -60,6 +60,7 @@ jobs:
           hugo \
             --gc \
             --minify \
+            --buildDrafts \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --logLevel debug
       - name: Upload artifact
