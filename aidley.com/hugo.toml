@@ -38,7 +38,7 @@ disableTitleCapitalization = false
 readMore = true
 relatedPosts = true
 numberOfRelatedPosts = 3
-postDescription="<center><img src=\"general/transflag.png\" height=120><br/>Trans rights are human rights.</center>"
+copyright = "{{ YEAR }} Tim Aidley. 🏳️‍⚧️ Trans rights are human rights."
 
 [related]
   includeNewer = true
