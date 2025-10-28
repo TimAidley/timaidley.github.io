@@ -19,8 +19,14 @@ theme = 'anatole'
     url = "/posts/"
     
     [[menu.main]]
-    name = "About"
+    name = "Projects"
     weight = 300
+    identifier = "projects"
+    url = "/portfolio/"
+    
+    [[menu.main]]
+    name = "About"
+    weight = 400
     identifier = "about"
     url = "/about/"
 
@@ -33,12 +39,13 @@ theme = 'anatole'
 title = "Tim Aidley"
 author = "Tim Aidley"
 profilePicture = "general/tim.jpg"
-contentratio = 0.65
+contentratio = 0.75
 disableTitleCapitalization = false
 readMore = true
 relatedPosts = true
 numberOfRelatedPosts = 3
-copyright = "{{ YEAR }} Tim Aidley. 🏳️‍⚧️ Trans rights are human rights."
+copyright = "{{ YEAR }} Tim Aidley."
+customCss = ["css/custom-portfolio.css"]
 
 [related]
   includeNewer = true

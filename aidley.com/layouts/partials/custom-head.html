@@ -1,0 +1,6 @@
+{{ if eq .Section "portfolio" }}
+{{ $customCSS := resources.Get "css/custom-portfolio.css" }}
+{{ if $customCSS }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
+{{ end }}
+{{ end }}
