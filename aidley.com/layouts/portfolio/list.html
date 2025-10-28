@@ -1,101 +1,211 @@
 {{ define "main" }}
 {{ $data := index .Site.Data .Site.Language.Lang "portfolio" }}
 {{ if not $data }}{{ $data = .Site.Data.portfolio }}{{ end }}
-{{ range $index, $element := $data.portfolioitems }}
-<div class="post {{ with .Site.Params.doNotLoadAnimations }}
-        .
-      {{ else }}
-        animated fadeInDown
-      {{ end }}">
-    {{ $anchorTitle := delimit (split .title " ") "" }}
 
-    <h2 class="portfolio__title" id="{{ $anchorTitle | lower }}">{{ title .title }}</h2>
-    {{ if .description }}
-    <h4>{{ .description }}</h4>
-    {{ end }}
+<!-- Sort Controls -->
+<div class="portfolio-sort-controls">
+    <label for="portfolio-sort">Sort by:</label>
+    <select id="portfolio-sort" class="portfolio-sort-select">
+        <option value="date-desc">Date (Newest First)</option>
+        <option value="date-asc">Date (Oldest First)</option>
+        <option value="category-date-desc">Category (Newest First)</option>
+        <option value="category-date-asc">Category (Oldest First)</option>
+    </select>
+</div>
 
-    {{ range $i, $p := .portfolioitem }}
-    <div class="portfolio-item">
-        <div class="portfolio-item__main">
-            {{ if .image }}
-            <div class="portfolio-item__image">
-                {{ if .link }}
-                <a href="{{ .link | safeURL }}" target="_blank" rel="noopener">
+<div id="portfolio-container">
+    {{ range $index, $element := $data.portfolioitems }}
+    <div class="post {{ with .Site.Params.doNotLoadAnimations }}
+          .
+        {{ else }}
+          animated fadeInDown
+        {{ end }}" data-category="{{ .title }}">
+        {{ $anchorTitle := delimit (split .title " ") "" }}
+
+        <h2 class="portfolio__title" id="{{ $anchorTitle | lower }}">{{ title .title }}</h2>
+        {{ if .description }}
+        <h4>{{ .description }}</h4>
+        {{ end }}
+
+        {{ range $i, $p := .portfolioitem }}
+        <div class="portfolio-item" data-date="{{ .start }}" data-category="{{ $element.title }}">
+            <div class="portfolio-item__main">
+                {{ if .image }}
+                <div class="portfolio-item__image">
+                    {{ if .link }}
+                    <a href="{{ .link | safeURL }}" target="_blank" rel="noopener">
+                        <img src="{{ .image | relURL }}" alt="{{ .name | markdownify }}" />
+                    </a>
+                    {{ else }}
                     <img src="{{ .image | relURL }}" alt="{{ .name | markdownify }}" />
-                </a>
-                {{ else }}
-                <img src="{{ .image | relURL }}" alt="{{ .name | markdownify }}" />
+                    {{ end }}
+                </div>
                 {{ end }}
+
+                <div class="portfolio-item__content">
+                    <h2>{{ .name | markdownify }}</h2>
+
+                    <ul class="portfolio__meta">
+                        {{ if .company }}
+                        <li class="portfolio__meta-item">
+                            <em class="fas fa-building"></em>
+                            <span>{{ .company }}</span>
+                        </li>
+                        {{ end }}
+                        {{ if .status }}
+                        <li class="portfolio__meta-item">
+                            <em class="fas fa-flag-checkered"></em>
+                            <span>{{ .status }}</span>
+                        </li>
+                        {{ end }}
+                        {{ if .start }}
+                        <li class="portfolio__meta-item">
+                            <em class="fas fa-calendar"></em>
+                            <span>{{ .start }}</span>
+                        </li>
+                        {{ end }}
+                        {{ if .end }}
+                        <li class="portfolio__meta-item">
+                            <em class="fas fa-calendar"></em>
+                            <span>{{ .end }}</span>
+                        </li>
+                        {{ end }}
+                    </ul>
+
+                    <p>{{ .description | markdownify }}</p>
+
+                    {{ if .link }}
+                    <div class="portfolio__button-wrapper">
+                        <a class="portfolio__button" href="{{ .link | safeURL }}" target="_blank" rel="noopener">
+                            {{- if .linktext -}}
+                            {{ .linktext | markdownify }}
+                            {{- else -}}
+                            Visit Site
+                            {{- end -}}
+                        </a>
+                    </div>
+                    {{ end }}
+
+                    <div class="separator">
+                        {{ range .tags }}
+                        <p class="tag">{{ . }}</p>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+
+            {{ if .screenshots }}
+            <div class="portfolio-item__screenshots">
+                <h3>Screenshots</h3>
+                <div class="portfolio-item__screenshots-grid">
+                    {{ range .screenshots }}
+                    <div class="portfolio-item__screenshot">
+                        <img src="{{ . | relURL }}" alt="Screenshot" />
+                    </div>
+                    {{ end }}
+                </div>
             </div>
             {{ end }}
-
-            <div class="portfolio-item__content">
-                <h2>{{ .name | markdownify }}</h2>
-
-                <ul class="portfolio__meta">
-                    {{ if .company }}
-                    <li class="portfolio__meta-item">
-                        <em class="fas fa-building"></em>
-                        <span>{{ .company }}</span>
-                    </li>
-                    {{ end }}
-                    {{ if .status }}
-                    <li class="portfolio__meta-item">
-                        <em class="fas fa-flag-checkered"></em>
-                        <span>{{ .status }}</span>
-                    </li>
-                    {{ end }}
-                    {{ if .start }}
-                    <li class="portfolio__meta-item">
-                        <em class="fas fa-calendar"></em>
-                        <span>{{ .start }}</span>
-                    </li>
-                    {{ end }}
-                    {{ if .end }}
-                    <li class="portfolio__meta-item">
-                        <em class="fas fa-calendar"></em>
-                        <span>{{ .end }}</span>
-                    </li>
-                    {{ end }}
-                </ul>
-
-                <p>{{ .description | markdownify }}</p>
-
-                {{ if .link }}
-                <div class="portfolio__button-wrapper">
-                    <a class="portfolio__button" href="{{ .link | safeURL }}" target="_blank" rel="noopener">
-                        {{- if .linktext -}}
-                        {{ .linktext | markdownify }}
-                        {{- else -}}
-                        Visit Site
-                        {{- end -}}
-                    </a>
-                </div>
-                {{ end }}
-
-                <div class="separator">
-                    {{ range .tags }}
-                    <p class="tag">{{ . }}</p>
-                    {{ end }}
-                </div>
-            </div>
-        </div>
-
-        {{ if .screenshots }}
-        <div class="portfolio-item__screenshots">
-            <h3>Screenshots</h3>
-            <div class="portfolio-item__screenshots-grid">
-                {{ range .screenshots }}
-                <div class="portfolio-item__screenshot">
-                    <img src="{{ . | relURL }}" alt="Screenshot" />
-                </div>
-                {{ end }}
-            </div>
         </div>
         {{ end }}
     </div>
     {{ end }}
 </div>
-{{ end }}
+
+<script>
+    (function () {
+        const sortSelect = document.getElementById('portfolio-sort');
+        const container = document.getElementById('portfolio-container');
+
+        // Store original order
+        const originalHTML = container.innerHTML;
+
+        sortSelect.addEventListener('change', function () {
+            const sortType = this.value;
+            sortPortfolio(sortType);
+        });
+
+        function sortPortfolio(sortType) {
+            const categories = Array.from(container.querySelectorAll('.post'));
+
+            if (sortType === 'date-desc' || sortType === 'date-asc') {
+                // Flatten all items across categories
+                let allItems = [];
+                categories.forEach(category => {
+                    const items = Array.from(category.querySelectorAll('.portfolio-item'));
+                    items.forEach(item => {
+                        allItems.push({
+                            element: item.cloneNode(true),
+                            date: item.dataset.date || '0',
+                            category: item.dataset.category
+                        });
+                    });
+                });
+
+                // Sort by date
+                allItems.sort((a, b) => {
+                    const dateA = parseInt(a.date) || 0;
+                    const dateB = parseInt(b.date) || 0;
+                    return sortType === 'date-desc' ? dateB - dateA : dateA - dateB;
+                });
+
+                // Clear container and add sorted items
+                container.innerHTML = '';
+                const wrapper = document.createElement('div');
+                wrapper.className = 'post';
+                allItems.forEach(item => {
+                    wrapper.appendChild(item.element);
+                });
+                container.appendChild(wrapper);
+
+            } else if (sortType === 'category-date-desc' || sortType === 'category-date-asc') {
+                // Restore original HTML first
+                container.innerHTML = originalHTML;
+
+                // Get fresh references after restore
+                let freshCategories = Array.from(container.querySelectorAll('.post'));
+
+                // Reverse category order for ascending sort
+                if (sortType === 'category-date-asc') {
+                    freshCategories.reverse();
+                    container.innerHTML = '';
+                    freshCategories.forEach(cat => container.appendChild(cat));
+                }
+
+                // Sort items within each category
+                freshCategories.forEach(category => {
+                    const items = Array.from(category.querySelectorAll('.portfolio-item'));
+                    const sortedItems = items.map(item => ({
+                        element: item,
+                        date: item.dataset.date || '0'
+                    })).sort((a, b) => {
+                        const dateA = parseInt(a.date) || 0;
+                        const dateB = parseInt(b.date) || 0;
+                        return sortType === 'category-date-desc' ? dateB - dateA : dateA - dateB;
+                    });
+
+                    // Get the container for items (after title and description)
+                    const titleElement = category.querySelector('.portfolio__title');
+                    const descElement = category.querySelector('h4');
+
+                    // Remove all portfolio items
+                    items.forEach(item => item.remove());
+
+                    // Re-add in sorted order after the description
+                    sortedItems.forEach(item => {
+                        if (descElement) {
+                            descElement.parentNode.insertBefore(item.element, descElement.nextSibling);
+                        } else if (titleElement) {
+                            titleElement.parentNode.insertBefore(item.element, titleElement.nextSibling);
+                        }
+                    });
+                });
+            }
+        }
+
+        // Apply default sort on load
+        sortPortfolio('date-desc');
+    })();
+</script>
 
 {{ end }}
