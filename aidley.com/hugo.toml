@@ -19,16 +19,16 @@ theme = 'anatole'
     url = "/posts/"
     
     [[menu.main]]
-    name = "Projects"
+    name = "Portfolio"
     weight = 300
-    identifier = "projects"
+    identifier = "portfolio"
     url = "/portfolio/"
     
-    [[menu.main]]
-    name = "About"
-    weight = 400
-    identifier = "about"
-    url = "/about/"
+    #[[menu.main]]
+    #name = "About"
+    #weight = 400
+    #identifier = "about"
+    #url = "/about/"
 
 [taxonomies]
     category = "categories"
