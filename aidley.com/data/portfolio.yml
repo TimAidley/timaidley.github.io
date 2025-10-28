@@ -236,7 +236,7 @@ portfolioitems:
           - Google
           - Mobile
 
-      - name: Engineering Manager, Terrain authoring and Rendering for Unity
+      - name: Built-in Terrain authoring and Rendering for Unity
         company: 'Unity Technologies'
         status: 'Released'
         start: '2021'
@@ -248,7 +248,7 @@ portfolioitems:
           - C#
           - C++
 
-      - name: Engineering Manager, World - next-generation terrain authoring and rendering for Unity
+      - name: World - next-generation terrain authoring and rendering for Unity
         status: 'Released'
         start: '2022'
         image: '/images/projects/software/UnityWorld.png'
