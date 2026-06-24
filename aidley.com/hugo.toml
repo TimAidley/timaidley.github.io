@@ -44,7 +44,8 @@ disableTitleCapitalization = false
 readMore = true
 relatedPosts = true
 numberOfRelatedPosts = 3
-copyright = "{{ YEAR }} Tim Aidley."
+copyright = """{{ YEAR }} Tim Aidley.\\
+🏳️‍⚧️ Trans rights are human rights."""
 customCss = ["css/custom-portfolio.css"]
 
 [related]
